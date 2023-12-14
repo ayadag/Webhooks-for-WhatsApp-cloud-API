@@ -8,7 +8,7 @@ const app=express().use(body_parser.json());
 const token=process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;//prasath_token
 
-app.listen(process.env.PORT,()=>{
+app.listen(process.env.PORT||3000,()=>{
     console.log("webhook is listening");
 });
 
