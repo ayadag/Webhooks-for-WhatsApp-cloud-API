@@ -55,12 +55,13 @@ app.post("/api/whatsapp",(req,res)=>{ //i want some
 
                axios({
                    method:"POST",
-                   url:"https://graph.facebook.com/v13.0/"+phon_no_id+"/messages?access_token="+token,
+                   url:"https://chatbot-15485.bubbleapps.io/version-test/api/1.1/wf/wapp/initialize",
                    data:{
                        messaging_product:"whatsapp",
-                       to:from,
+                       phon_number_id:phon_no_id,
+                       from:from,
                        text:{
-                           body:"Hi.. I'm Prasath, your message is "+msg_body
+                           body:msg_body
                        }
                    },
                    headers:{
