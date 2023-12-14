@@ -7,6 +7,7 @@ const app=express().use(body_parser.json());
 
 const token=process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;//prasath_token
+const mykey=process.env.MYKEY
 const port = process.env.PORT || 3000;
 
 app.listen(port,()=>{
@@ -15,25 +16,28 @@ app.listen(port,()=>{
 
 //to verify the callback url from dashboard side - cloud api side
 app.get("/api/whatsapp",(req,res)=>{
+    
+   let id=req.query["key"];
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
 
 
-    if(mode && token){
+    /*if(mode && token){*/
 
-        if(mode==="subscribe" && token===mytoken){
+        if(mode==="subscribe" && token===mytoken &&id===mykey){
             res.status(200).send(challange);
         }else{
             res.status(403);
         }
 
-    }
+   /* }*/
 
 });
 
 app.post("/api/whatsapp",(req,res)=>{ //i want some 
 
+    let id=req.query["key"];
     let body_param=req.body;
 
     console.log(JSON.stringify(body_param,null,2));
@@ -57,7 +61,7 @@ app.post("/api/whatsapp",(req,res)=>{ //i want some
                    method:"POST",
                    url:"https://chatbot-15485.bubbleapps.io/version-test/api/1.1/wf/wapp/initialize",
                    data:{
-                       messaging_product:"whatsapp",
+                       key:id,
                        phon_number_id:phon_no_id,
                        from:from,
                        text:{
