@@ -7,9 +7,10 @@ const app=express().use(body_parser.json());
 
 const token=process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;//prasath_token
+const port = process.env.PORT || 3000;
 
-app.listen(process.env.PORT||3000,()=>{
-    console.log("webhook is listening");
+app.listen(port,()=>{
+    console.log("webhook is listening on"+ port);
 });
 
 //to verify the callback url from dashboard side - cloud api side
