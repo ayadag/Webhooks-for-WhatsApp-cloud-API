@@ -24,17 +24,22 @@ app.get("/api/whatsapp",(req,res)=>{
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
    let mytoken;
+   mytoken = fn();
+   console.log(mytoken);
 
+    function fn(){
      sendHttpRequest('GET', 'https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => {
-mytoken=responseData.response.mytoken;
-         
+     let mytoken1=responseData.response.mytoken;
+         return mytoken1;
+              })
+}
         if(token===mytoken){
             res.status(200).send(challange);
         }else{
             res.status(403);
         }
     
-     })
+
 });
 
 app.post("/api/whatsapp",(req,res)=>{ //i want some 
