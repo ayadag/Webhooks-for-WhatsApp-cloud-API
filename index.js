@@ -7,7 +7,7 @@ const app=express().use(body_parser.json());
 
 const token=process.env.TOKEN;
 //const mytoken=process.env.MYTOKEN;//prasath_token
-var mytoken;
+//var mytoken;
 //const mykey=process.env.MYKEY
 //var mykey;
 const port = process.env.PORT || 3000;
@@ -23,11 +23,12 @@ app.get("/api/whatsapp",(req,res)=>{
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
+   let mytoken;
 
      sendHttpRequest('GET', 'https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => {
 mytoken=responseData.response.mytoken;
          
-        if(mode==="subscribe" && token===mytoken){
+        if(token===mytoken){
             res.status(200).send(challange);
         }else{
             res.status(403);
