@@ -42,7 +42,7 @@ app.get("/api/whatsapp",(req,res)=>{
       axios.get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/')
   .then((response) => {
     console.log(response.data.response.mytoken);
-      let mytoken response.data.response.mytoken;
+      let mytoken = response.data.response.mytoken;
 
     if(mode && token){
         if(mode==="subscribe" && token===mytoken){
