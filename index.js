@@ -84,9 +84,7 @@ app.post("/api/whatsapp",(req,res)=>{ //i want some
                        phon_number_id:phon_no_id,
                        from:from,
                        name:cont_name,
-                       text:{
-                           body:msg_body
-                       }
+                       body:msg_body
                    },
                    headers:{
                        "Content-Type":"application/json"
