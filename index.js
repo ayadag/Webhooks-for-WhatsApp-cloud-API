@@ -6,7 +6,7 @@ require('dotenv').config();
 const app=express().use(body_parser.json());
 
 const token=process.env.TOKEN;
-const mytoken=process.env.MYTOKEN;//prasath_token
+//const mytoken=process.env.MYTOKEN;//prasath_token
 const mykey=process.env.MYKEY
 const port = process.env.PORT || 3000;
 
@@ -22,16 +22,17 @@ app.get("/api/whatsapp",(req,res)=>{
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
 
+axios. get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+key) . then((responseData => { 
+(mytoken=responseData;
 
-    /*if(mode && token){*/
-
+    
         if(mode==="subscribe" && token===mytoken &&id===mykey){
             res.status(200).send(challange);
         }else{
             res.status(403);
         }
-
-   /* }*/
+ });
+    
 
 });
 
