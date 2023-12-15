@@ -20,10 +20,10 @@ app.listen(port,()=>{
 app.get("/api/whatsapp",(req,res)=>{
     
    //let mykey=req.query["key"];
-   //let mode=req.query["hub.mode"];
+   let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
-   let mytoken=12345;
+   let mytoken="12345";
 
     /*
    let mytoken = fn();
@@ -35,11 +35,13 @@ app.get("/api/whatsapp",(req,res)=>{
          return mytoken1;
               })
 }*/
-        if(token===mytoken){
+    if(mode && token){
+        if(mode==="subscribe" && token===mytoken){
             res.status(200).send(challange);
         }else{
             res.status(403);
         }
+    }
     
 
 });
