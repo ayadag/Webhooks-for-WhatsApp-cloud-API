@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app=express().use(body_parser.json());
 
-const token=process.env.TOKEN;
+//const token=process.env.TOKEN;
 //const mytoken=process.env.MYTOKEN;//prasath_token
 //var mytoken;
 //const mykey=process.env.MYKEY
@@ -23,8 +23,10 @@ app.get("/api/whatsapp",(req,res)=>{
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
-   let mytoken;
-   mytoken = fn();
+   //let mytoken=12345;
+
+    
+   let mytoken = fn();
    console.log(mytoken);
 
     function fn(){
