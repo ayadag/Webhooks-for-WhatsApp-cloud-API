@@ -7,7 +7,7 @@ const app=express().use(body_parser.json());
 
 const token=process.env.TOKEN;
 //const mytoken=process.env.MYTOKEN;//prasath_token
-//var mytoken;
+var mytoken;
 //const mykey=process.env.MYKEY
 //var mykey;
 const port = process.env.PORT || 3000;
