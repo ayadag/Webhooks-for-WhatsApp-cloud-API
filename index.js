@@ -15,6 +15,13 @@ const port = process.env.PORT || 3000;
 app.listen(port,()=>{
     console.log("webhook is listening on port "+ port);
 });
+    function fn(mykey){
+     sendHttpRequest('GET', 'https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => {
+     let mytoken1=responseData.response.mytoken;
+         return mytoken1;
+              })
+}
+
 
 //to verify the callback url from dashboard side - cloud api side
 app.get("/api/whatsapp",(req,res)=>{
@@ -29,12 +36,7 @@ app.get("/api/whatsapp",(req,res)=>{
    let mytoken = fn(mykey);
    console.log(mytoken);
 
-    function fn(mykey){
-     sendHttpRequest('GET', 'https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => {
-     let mytoken1=responseData.response.mytoken;
-         return mytoken1;
-              })
-}
+    
     if(mode && token){
         if(mode==="subscribe" && token===mytoken){
             res.status(200).send(challange);
