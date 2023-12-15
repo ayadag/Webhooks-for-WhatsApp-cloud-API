@@ -26,7 +26,7 @@ app.get("/api/whatsapp",(req,res)=>{
 const getData = () => {
 axios. get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+id) . then((responseData => { 
 (
-    let mytoken1=responseData.response.mytoken;
+    var mytoken1=responseData.response.mytoken;
     return mytoken1;
  })
 } 
