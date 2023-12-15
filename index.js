@@ -15,12 +15,18 @@ const port = process.env.PORT || 3000;
 app.listen(port,()=>{
     console.log("webhook is listening on port "+ port);
 });
-    function fn(mykey){
+
+/*axios.get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/') . then(responseData => { 
+         let mytoken=responseData.response.mytoken;
+
+});*/
+    
+    /*function fn(mykey){
      sendHttpRequest('GET', 'https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => {
      let mytoken1=responseData.response.mytoken;
          return mytoken1;
               })
-}
+};*/
 
 
 //to verify the callback url from dashboard side - cloud api side
@@ -31,20 +37,19 @@ app.get("/api/whatsapp",(req,res)=>{
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
    //let mytoken="12345";
+    //let mytoken = fn(mykey);
 
-    
-   let mytoken = fn(mykey);
-   console.log(mytoken);
-
-    
+  axios.get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => { 
+         let mytoken=responseData.response.mytoken
+      
     if(mode && token){
         if(mode==="subscribe" && token===mytoken){
-            res.status(200).send(challange);
+            res.status(200).send(challange)
         }else{
-            res.status(403);
+            res.status(403)
         }
     }
-    
+    })
 
 });
 
