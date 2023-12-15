@@ -78,7 +78,7 @@ app.post("/api/whatsapp",(req,res)=>{ //i want some
 
                axios({
                    method:"POST",
-                   url:"https://chatbot-15485.bubbleapps.io/version-test/api/1.1/wf/wapp/initialize",
+                   url:"https://chatbot-15485.bubbleapps.io/version-test/api/1.1/wf/wapp/",
                    data:{
                        key:id,
                        phon_number_id:phon_no_id,
