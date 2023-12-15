@@ -22,13 +22,14 @@ app.get("/api/whatsapp",(req,res)=>{
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
-   getData();
+   mytoken = getData();
 const getData = () => {
 axios. get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+id) . then((responseData => { 
-(mytoken=responseData.response.mytoken;
-    return mytoken;
- });
-}; 
+(
+    let mytoken1=responseData.response.mytoken;
+    return mytoken1;
+ })
+} 
         if(mode==="subscribe" && token===mytoken &&id===mykey){
             res.status(200).send(challange);
         }else{
