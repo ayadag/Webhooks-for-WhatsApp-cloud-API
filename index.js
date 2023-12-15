@@ -22,7 +22,7 @@ app.get("/api/whatsapp",(req,res)=>{
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
 
-axios. get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+key) . then((responseData => { 
+axios. get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+id) . then((responseData => { 
 (mytoken=responseData;
 
     
