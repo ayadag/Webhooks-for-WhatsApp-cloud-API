@@ -23,9 +23,9 @@ app.get("/api/whatsapp",(req,res)=>{
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
-   //let mytoken=12345;
+   let mytoken=12345;
 
-    
+    /*
    let mytoken = fn();
    console.log(mytoken);
 
@@ -34,7 +34,7 @@ app.get("/api/whatsapp",(req,res)=>{
      let mytoken1=responseData.response.mytoken;
          return mytoken1;
               })
-}
+}*/
         if(token===mytoken){
             res.status(200).send(challange);
         }else{
