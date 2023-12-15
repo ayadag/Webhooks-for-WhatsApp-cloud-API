@@ -39,9 +39,10 @@ app.get("/api/whatsapp",(req,res)=>{
    //let mytoken="12345";
     //let mytoken = fn(mykey);
 
-  axios.get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => { 
-         let mytoken=responseData.response.mytoken
-      
+      axios.get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/')
+  .then((response) => {
+    console.log(response.data.response.mytoken);
+
     if(mode && token){
         if(mode==="subscribe" && token===mytoken){
             res.status(200).send(challange)
