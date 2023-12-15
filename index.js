@@ -21,12 +21,12 @@ app.listen(port,()=>{
 
 });*/
     
-    /*function fn(mykey){
+    function fn(mykey){
      sendHttpRequest('GET', 'https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => {
      let mytoken1=responseData.response.mytoken;
          return mytoken1;
               })
-};*/
+};
 
 
 //to verify the callback url from dashboard side - cloud api side
@@ -39,19 +39,17 @@ app.get("/api/whatsapp",(req,res)=>{
    //let mytoken="12345";
     //let mytoken = fn(mykey);
 
-      axios.get('https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/')
-  .then((response) => {
-    console.log(response.data.response.mytoken);
-      let mytoken = response.data.response.mytoken;
 
     if(mode && token){
+        
+        let mytoken = fn(mykey);
+        
         if(mode==="subscribe" && token===mytoken){
             res.status(200).send(challange)
         }else{
             res.status(403)
         }
     }
-    })
 
 });
 
