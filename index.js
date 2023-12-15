@@ -23,7 +23,7 @@ app.get("/api/whatsapp",(req,res)=>{
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
-   let mytoken="12345";
+   let mytoken=12345;
 
     /*
    let mytoken = fn();
