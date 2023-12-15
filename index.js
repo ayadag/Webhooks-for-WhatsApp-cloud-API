@@ -7,8 +7,9 @@ const app=express().use(body_parser.json());
 
 const token=process.env.TOKEN;
 //const mytoken=process.env.MYTOKEN;//prasath_token
-var mytoken;
-const mykey=process.env.MYKEY
+//var mytoken;
+//const mykey=process.env.MYKEY
+//var mykey;
 const port = process.env.PORT || 3000;
 
 app.listen(port,()=>{
@@ -18,15 +19,15 @@ app.listen(port,()=>{
 //to verify the callback url from dashboard side - cloud api side
 app.get("/api/whatsapp",(req,res)=>{
     
-   let id=req.query["key"];
+   let mykey=req.query["key"];
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
 
-     sendHttpRequest('GET', 'https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+id+'/').then(responseData => {
+     sendHttpRequest('GET', 'https://chatbasebot.com/version-test/api/1.1/wf/xyzg?key='+mykey+'/').then(responseData => {
 mytoken=responseData.response.mytoken;
          
-        if(mode==="subscribe" && token===mytoken &&id===mykey){
+        if(mode==="subscribe" && token===mytoken){
             res.status(200).send(challange);
         }else{
             res.status(403);
