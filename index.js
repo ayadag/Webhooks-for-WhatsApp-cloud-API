@@ -19,8 +19,8 @@ app.listen(port,()=>{
 //to verify the callback url from dashboard side - cloud api side
 app.get("/api/whatsapp",(req,res)=>{
     
-   let mykey=req.query["key"];
-   let mode=req.query["hub.mode"];
+   //let mykey=req.query["key"];
+   //let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
    let token=req.query["hub.verify_token"];
    let mytoken=12345;
